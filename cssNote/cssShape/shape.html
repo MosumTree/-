@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Css中的各种形状</title>
+</head>
+<style type="text/css">
+    .container{
+        width: 100%;
+        height: 1200px;
+        background: #eee;
+        padding: 20px;
+    }
+    h1{
+        text-align: center;
+    }
+    .circle{
+        display: flex;
+        
+    }
+    .circle div{
+        height: 100px;
+        width: 100px;
+        margin-right: 20px;
+        background: rgb(21, 140, 252);
+    }
+    #circle_1{  
+        border-radius: 100px;
+    }
+    #circle_2{
+        width:150px;
+        border-radius: 50%;
+        /* background: rgb(4, 175, 110); */
+    }
+    #circle_3{
+        border-radius: 50%/100% 100% 0 0;
+        height:100px;
+    }
+    #circle_4{
+        border-radius: 100% 0 0 0 ;
+    }
+
+    #triangle_1{
+        width: 0;
+        height: 0;
+        margin-top: 20px;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid rgb(8, 240, 189);
+    }
+    .quardangle{
+        display: flex;
+        margin-top: 40px;
+        margin-left: 50px;
+    }
+    .quardangle div{
+        height: 100px;
+        width: 100px;;
+        margin-right: 60px;
+        background: #fb3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #quardangle_1{
+        transform: skew(-45deg);
+    }
+    #quardangle_1>p{
+        transform:skewX(45deg);
+    }
+    #quardangle_2{
+        transform: rotate(45deg);
+    }
+    #quardangle_3{
+        transform: skewX(30deg);
+        transform: scaleY(0.5) rotate(45deg) ;/* 先作用后面的，再作用前面的 */
+    }
+    .corner{
+        margin-top: 40px;
+        display: flex;
+    }
+    .corner>div{
+        height: 120px;
+        width: 120px;
+        margin-right: 20px;
+        background: rgb(204, 30, 30);
+    }
+    #corner_1{
+        background: linear-gradient(135deg, transparent 15px, rgb(204, 30, 30) 0)
+                    top left,
+                    linear-gradient(-135deg, transparent 15px, rgb(204, 30, 30) 0)
+                    top right,
+                    linear-gradient(-45deg, transparent 15px, rgb(204, 30, 30) 0)
+                    bottom right,
+                    linear-gradient(45deg, transparent 15px, rgb(204, 30, 30) 0)
+                    bottom left;
+        background-size: 50% 50%;
+        background-repeat: no-repeat;
+        
+    }
+    #corner_2{
+        background: radial-gradient(circle at top left, transparent 30px, rgb(204, 30, 30) 0)
+                    top left,
+                    radial-gradient(circle at top right, transparent 30px, rgb(204, 30, 30) 0)
+                    top right,
+                    radial-gradient(circle at bottom right, transparent 30px, rgb(204, 30, 30) 0)
+                    bottom right,
+                    radial-gradient(circle at bottom left, transparent 30px, rgb(204, 30, 30) 0)
+                    bottom left;
+        background-size: 50% 50%;
+        background-repeat: no-repeat;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <h1>css各种形状</h1>
+        <div class="circle">
+            <div id="circle_1"></div>
+            <div id="circle_2"></div>
+            <div id="circle_3"></div>
+            <div id="circle_4"></div>
+        </div>
+        <div class="triangle">
+            <div id="triangle_1"></div>
+        </div>
+        <div class="quardangle">
+            <div id="quardangle_1"><p>QUARD1</p></div>
+            <div id="quardangle_2"></div>
+            <div id="quardangle_3"></div>
+        </div>
+        <div class="corner">
+            <div id = "corner_1"></div>
+            <div id = "corner_2"></div>
+        </div>
+    </div>
+    
+</body>
+</html>
