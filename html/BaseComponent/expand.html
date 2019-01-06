@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ExpandList</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/expand.css">
+    <script src="../js/jquery-3.1.0.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <div class="expand-container">
+            <ul class="expand-head">
+                <li id="expand-head-item1" class="expand-head-item">expand item a</li>
+                <li id="expand-head-item2" class="expand-head-item">expand item b</li>
+                <li id="expand-head-item3" class="expand-head-item">expand item c</li>
+            </ul>
+            <div class="expand-content">
+                <ul id="expand-content-list1" class="expand-content-list">
+                    <li class="expand-content-list-item-active">expand content list A item 1</li>
+                    <li>expand content list A item 2</li>
+                    <li>expand content list A item 3</li>
+                    <li>expand content list A item 4</li>
+                </ul>
+                <ul id="expand-content-list2" class="expand-content-list">
+                    <li class="expand-content-list-item-active">expand content list B item 1</li>
+                    <li>expand content list B item 2</li>
+                    <li>expand content list B item 3</li>
+                </ul>
+                <ul id="expand-content-list3" class="expand-content-list">
+                    <li class="expand-content-list-item-active">expand content list C item 1</li>
+                    <li>expand content list C item 2</li>
+                    <li>expand content list C item 3</li>
+                    <li>expand content list C item 4</li>
+                    <li>expand content list C item 5</li>
+                </ul>
+            </div>
+        </div>
+        <div class="content-container">
+            <div class="content-item"></div>
+            <div class="content-item"></div>
+            <div class="content-item"></div>
+            <div class="content-item"></div>
+            <div class="content-item"></div>
+            <div class="content-item"></div>
+        </div>
+    </div>
+
+</body>
+<script>
+    var currentSeleted = {
+        "expand-content-list1":'expand content list A item 1',
+        "expand-content-list2":'expand content list B item 1',
+        "expand-content-list3":'expand content list C item 1'
+    };
+    var loadFinish = false;
+    $("#expand-head-item1").click(function () {
+        if ($(this).hasClass('expand-head-item-active')) {
+            $(this).removeClass('expand-head-item-active');
+            $('.expand-content-list').css("display", "none");
+        }
+        else {
+            $('.expand-head-item').removeClass('expand-head-item-active');
+            $(this).addClass('expand-head-item-active');
+            $('.expand-content-list').css("display", "none");
+            $('#expand-content-list1').css("display", "block");
+        }
+    });
+    $("#expand-head-item2").click(function () {
+        if ($(this).hasClass('expand-head-item-active')) {
+            $(this).removeClass('expand-head-item-active');
+            $('.expand-content-list').css("display", "none");
+        }
+        else {
+            $('.expand-head-item').removeClass('expand-head-item-active');
+            $(this).addClass('expand-head-item-active');
+            $('.expand-content-list').css("display", "none");
+            $('#expand-content-list2').css("display", "block");
+        }
+    });
+    $("#expand-head-item3").click(function () {
+        if ($(this).hasClass('expand-head-item-active')) {
+            $(this).removeClass('expand-head-item-active');
+            $('.expand-content-list').css("display", "none");
+        }
+        else {
+            $('.expand-head-item').removeClass('expand-head-item-active');
+            $(this).addClass('expand-head-item-active');
+            $('.expand-content-list').css("display", "none");
+            $('#expand-content-list3').css("display", "block");
+        }
+    });
+
+    $('.expand-content-list li').on('click',function () {
+        $('.expand-head-item').removeClass('expand-head-item-active');
+        $('.expand-content-list').css("display", "none");
+        $(this).parent().children().removeClass('expand-content-list-item-active');
+        $(this).addClass('expand-content-list-item-active');
+        currentSeleted[$(this).parent().attr('id')] = $(this).text();
+        console.log(currentSeleted);
+    });
+
+    
+    //监听滚动条
+    window.onscroll= function(){
+        if (loadFinish) {
+            return;
+        }
+        //变量t是滚动条滚动时，距离顶部的距离
+        var scrollPos = document.documentElement.scrollTop||document.body.scrollTop;
+        var contentHeight = $(document).height() - $(window).height();
+        if (contentHeight-scrollPos<50) {
+            alert('loadding!');
+            loadFinish = true;
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MYCOLOR</title>
+    <link rel="stylesheet" type="" href="./css/myColor.css">
+</head>
+
+<body>
+    <div id="mycolor_wrap">
+        <div id="mycolor_head">
+        </div>
+        <div id="hide_scroll">
+            <div id="mycolor_content">
+            </div>
+        </div>
+        
+        <div id="mycolor_show">
+            <div id="mycolor_colorname">
+                <p id="name">深月竹</p>
+            </div>
+            <!--<div class="circle">
+                <div class="pie_left">
+                    <div class="left"></div>
+                </div>
+                <div class="pie_right">
+                    <div class="right"></div>
+                </div>
+                <div class="mask"><span>30</span>%</div>
+            </div>-->
+        </div>
+    </div>
+    <script src="./js/jquery-3.1.0.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var pattern1 = /\w/;
+            var text1 = 'javascript';
+            console.log(text1.replace(pattern1,'JavaScript'))
+
+            var pattern2 = /\d/;
+            var text2 = '123456';
+            console.log(text2.replace(pattern2,'654321'))
+
+            var mycolor = [
+                ["2578b5", "深月竹"],
+                ["005b5a", "沙绿"],
+                ["dc143c", "洋红"],
+                ["bb1c33", "月季红"],
+                ["a22076", "牵牛紫"],
+                ["2ec3e7", "天青"],
+                ["008e59", "鹦鹉绿"],
+                ["e9db39", "柠檬黄"],
+                ["eb652d", "章丹"],
+                ["fcb1aa", "十样锦"],
+                ["303030", "百草霜"],
+                ["c35655", "妃红"],
+                ["e7693f", "桔红"],
+                ["b7b278", "枯绿"],
+                ["79485a","雪紫"],
+                ["2578b5", "深月竹"],
+                ["005b5a", "沙绿"],
+                ["dc143c", "洋红"],
+                ["bb1c33", "月季红"],
+                ["a22076", "牵牛紫"],
+                ["2ec3e7", "天青"],
+                ["008e59", "鹦鹉绿"],
+                ["e9db39", "柠檬黄"],
+                ["eb652d", "章丹"],
+                ["fcb1aa", "十样锦"],
+                ["303030", "百草霜"],
+                ["c35655", "妃红"],
+                ["e7693f", "桔红"],
+                ["b7b278", "枯绿"]
+            ];
+            var mycolorItems = "";
+            for (var index = 0; index < mycolor.length; index++) {
+                var item = mycolor[index];
+                mycolorItems += "<div class='mycolor_item_container' id='" + item[0] + "'>";
+                mycolorItems += "<div class='mycolor_item' style ='background: #" + item[0] + "'></div>";
+                mycolorItems += "<div class='mycolor_name'>";
+                mycolorItems += "<p>#" + item[0] + "</p>";
+                mycolorItems += "<p>" + item[1] + "</p>";
+                mycolorItems += "</div></div>";
+            }
+            $("#mycolor_content").append(mycolorItems);
+            for (var key in mycolor) {
+                var element = mycolor[key][0];
+                var element2 = mycolor[key][1];
+                $("#" + element).on("click", { key: element }, function (event) {
+                    $("#mycolor_wrap").css("background-color", "#" + event.data.key);
+                });
+                $("#" + element).on("click", { key: element2 }, function (event) {
+                    $("#name").text(event.data.key);
+                });
+            }
+            $('.circle').each(function (index, el) { var num = $(this).find('span').text() * 3.6; if (num <= 180) { $(this).find('.right').css('transform', "rotate(" + num + "deg)"); } else { $(this).find('.right').css('transform', "rotate(180deg)"); $(this).find('.left').css('transform', "rotate(" + (num - 180) + "deg)"); }; });
+        })
+    </script>
+
+
+</body>
+
+</html>
